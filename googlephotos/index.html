@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>FLEX</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script >
+		  window.___gcfg = {
+		    lang: 'es-ES',
+		    parsetags: 'onload'
+		  };
+		</script>
+		<script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
+		<script>
+
+			function onLoadCallback() {
+
+				gapi.load('auth2:client', authInit);
+			}
+
+			function authInit() { 
+
+				gapi.auth2.init({
+					secret: 'j9RI1K_Q4hLBobXdg6kM3bb-',
+					client_id: '937253082177-19lc069r8244041jhd8tgfh8a21q2lhb.apps.googleusercontent.com'
+				})
+				.then(
+					startApp,
+					function(error) {
+
+						console.log(error.details);
+					}
+				);
+			}
+			function startApp() {
+
+				gapi.client.request({
+					path: 'https://photoslibrary.googleapis.com/v1/albums'
+				})
+				.then(
+					function(data) {
+
+						console.log(data);
+					},
+					function(error) {
+
+						console.log(error.details);
+					}
+				);
+			}
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

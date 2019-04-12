@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+header, footer , #featured, #presentation, ul.link, .meta {
+display:none;
+}
+
+.toggle {display:block;}
+
+section .main aside nav ul#pages li.current_page_item a, section .main aside nav ul#pages li.current_page_ancestor a   {
+background: #0071bc url(images/bg_nav_pages.png) right center no-repeat; 
+		background-image: url(images/bg_print.png) ;
+		}

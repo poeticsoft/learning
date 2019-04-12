@@ -1,0 +1,450 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"na",
+				"nativeElement\tproperty"
+			],
+			[
+				"max",
+				"max-width"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 114.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/learning",
+		"/E/learning/angular",
+		"/E/learning/angular/pixi"
+	],
+	"file_history":
+	[
+		"/E/software/nifi/result/C6316B00_Sheet1.csv",
+		"/E/learning/mailtemplate/index.html",
+		"/E/learning/caret/index.html",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/base.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/bgtext.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/element.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/map.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/podium.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/position.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/responsivebgtext.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/showcase.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/video.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/particle/bubble.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/particle/fog.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/rally.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/scene/parallax.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/scene/scene.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/scene/test.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/cover.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/lanjaron-cover.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/map.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/rally.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/section.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/video.ts",
+		"/E/learning/angular/pixi/src/app/service/pixiinteraction.ts",
+		"/E/learning/angular/pixi/src/app/service/pixistyle.ts",
+		"/E/learning/angular/pixi/src/app/service/pixitexture.ts",
+		"/E/learning/angular/pixi/angular.json",
+		"/E/learning/angular/pixi/src/tsconfig.app.json",
+		"/E/learning/angular/pixi/tsconfig.json",
+		"/E/learning/angular/pixi/node_modules/@types/pixi.js/index.d.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/avatar/avatar.svg",
+		"/E/learning/angular/pixia/package.json",
+		"/E/learning/angular/pixi/package.json",
+		"/E/learning/googlephotos/index.html",
+		"/C/Users/alberto/Desktop/Downloads/client_secret_937253082177-19lc069r8244041jhd8tgfh8a21q2lhb.apps.googleusercontent.com (2).json",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/directory.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/avatar/template.html",
+		"/E/learning/angular/pixi/src/app/component/blockstore/avatar/style.scss",
+		"/E/learning/angular/pixi/src/app/view/pixi/style.scss",
+		"/E/learning/angular/pixi/src/app/component/blockstore/avatar/component.ts",
+		"/E/learning/angular/pixi/src/app/service/api.ts",
+		"/E/learning/angular/pixi/src/app/component/ui/button/style.scss",
+		"/E/learning/angular/pixi/src/app/view/pixi/template.html",
+		"/E/learning/angular/pixi/src/app/component/ui/button/template.html",
+		"/E/learning/angular/pixi/src/app/component/ui/button/component.ts",
+		"/E/learning/angular/pixi/src/app/module.ts",
+		"/E/learning/angular/pixi/src/app/view/avatar/style.scss",
+		"/E/learning/angular/pixi/src/app/view/avatar/component.ts",
+		"/E/learning/angular/pixi/src/app/view/pixi/component.ts",
+		"/E/learning/angular/pixi/src/app/view/main/component.ts",
+		"/E/learning/angular/pixi/src/app/view/main/template.html",
+		"/E/learning/angular/pixi/src/app/view/main/style.scss",
+		"/E/learning/angular/pixi/src/scss/common.scss",
+		"/E/learning/angular/pixi/src/app/component/layout/block/template.html",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/component.ts",
+		"/E/learning/angular/pixi/src/app/view/avatar/template.html",
+		"/P/playmotiv/material/avatar/male-a.svg",
+		"/E/learning/avatargen/src/components/AvatarForm.tsx",
+		"/E/learning/avatargen/src/components/Main.tsx",
+		"/E/learning/avatar/src/components/AvatarForm.tsx",
+		"/E/learning/avatar/src/components/Main.tsx",
+		"/E/learning/avatar/tsconfig.json",
+		"/E/software/nginx/conf/nginx.conf",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/scene/directory.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/style.scss",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/particle/bubbles.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/particle/explode.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/template.html",
+		"/E/learning/.gitignore",
+		"/E/learning/gitstatus/test.ts",
+		"/E/learning/blockchain/naivecoin/src/blockchain.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/premios.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/podiums.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/general.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/rankings.ts",
+		"/E/learning/angular/pixi/src/app/service/pixiinteraction.ts.bak.ts",
+		"/E/learning/angular/pixi/src/app/service/pixiui.ts",
+		"/E/learning/angular/pixi/src/app/service/pixitextures.ts",
+		"/E/learning/angular/pixi/src/app/service/responsive.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/scene/eventtest.ts",
+		"/E/learning/angular/pixi/src/assets/fonts/raleway/raleway.scss",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/sectionmark.ts",
+		"/C/Users/alberto/learning-angular.bat",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/cover-bak.ts.bak",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/cover-bak.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/responsivetext.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/text.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/textstyles.ts",
+		"/C/Users/alberto/Desktop/Downloads/greensock-js/greensock-js/src/uncompressed/easing/EasePack.js",
+		"/C/Users/alberto/Desktop/Downloads/greensock-js/greensock-js/src/uncompressed/TweenLite.js",
+		"/E/learning/angular/pixi/src/styles.scss",
+		"/E/learning/angular/pixi/src/assets/fonts/campus/campus.scss",
+		"/E/learning/avatar/tools/component-extractor.html",
+		"/E/learning/avatar/public/index.html",
+		"/E/learning/avatar/tools/text.svg",
+		"/E/learning/avatar/tools/text-copia.svg",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/section/cover.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/section/section.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/section/general.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/base.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/scene/scene.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/scene/parallax.ts",
+		"/C/Users/alberto/Desktop/Downloads/tween/tween/index.html",
+		"/C/Users/alberto/Desktop/Downloads/tween/tween/lib/tween.js",
+		"/C/Users/alberto/Desktop/Downloads/avataaars.svg",
+		"/C/Users/alberto/Desktop/Downloads/avataaars-geneator-master/avataaars-geneator-master/src/components/AvatarForm.tsx",
+		"/C/Users/alberto/Desktop/Downloads/avataaars-geneator-master/avataaars-geneator-master/src/components/Renderer.tsx",
+		"/C/Users/alberto/Desktop/Downloads/avataaars-geneator-master/avataaars-geneator-master/src/index.tsx",
+		"/C/Users/alberto/Desktop/Downloads/avataaars-geneator-master/avataaars-geneator-master/src/assets/logo.svg",
+		"/C/Users/alberto/Desktop/Downloads/avataaars-geneator-master/avataaars-geneator-master/tools/component-extractor.html",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/component.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/games/base.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/scene.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/template.html",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/component-raf.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/creator.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/story.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/textstyle.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/text-style.ts",
+		"/E/learning/angular/base/src/app/module.ts",
+		"/E/learning/angular/base/src/app/class/pixi-sprite.ts",
+		"/E/learning/angular/base/src/app/component/app/template.html",
+		"/E/learning/angular/base/src/app/service/responsive.ts",
+		"/E/learning/angular/base/src/app/view/pixi/component.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/style.scss",
+		"/E/learning/angular/base/src/app/view/pixi/template.html"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+			"E:\\learning\\angular\\pixi\\src\\app",
+			"<open files>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"Python",
+			"import * as PIXI from 'pixi.js';",
+			"pixi.js",
+			"path",
+			"updateText",
+			"this.player",
+			"<path id",
+			"<path id=\"glass(.*?)\"",
+			"<path id=\"hair(.*?)\"",
+			"ath id=\"(.*?)\"",
+			"path id=\"(.*?)\"",
+			"avatarRef",
+			"onDownloadPNG",
+			"container.height",
+			"container.width",
+			"this.roundframe",
+			"this.margin",
+			"this.game.texture.get('",
+			"this.game.texture.load('",
+			"tickersubscriber",
+			"05",
+			"masparticles",
+			"assets/img/pixi/",
+			"this.img",
+			"generateNextBlock",
+			"calculateHash",
+			"touchmap",
+			"sectionedge",
+			"locationsectionedge",
+			"export",
+			".locationsceneedge",
+			".maxpanscene",
+			"maxpanscene",
+			"interactionmode",
+			"sectionpanspace",
+			"viewW",
+			"scenelocation",
+			"locationsceneedge",
+			"public ",
+			"sectionused",
+			"locationsceneedge",
+			"panemitter",
+			"panX",
+			"public ",
+			"../assets",
+			"devtext",
+			"maxpanscene",
+			"updateText",
+			"interaccion",
+			"PIXI.",
+			"elements",
+			"function ",
+			"this.stage.mark",
+			"this.stage.scene",
+			"this.sceneH",
+			"_setupScene",
+			"_loadResources",
+			"bunny",
+			"</div>",
+			"<div(.*?)>",
+			"</div>",
+			"<input(.*?)>",
+			"\\[(.*?)\\]",
+			"<div(.*?)>",
+			" class=\"widget-title\"",
+			"</div>",
+			"<div(.*?)>",
+			"</div>",
+			"<div(.*?)>",
+			"<input(.*?)>",
+			"\\[(.*?)\\]",
+			"<div(.*?)>",
+			"</div>",
+			"<div(.*?)>",
+			"<p> </p>",
+			"    ",
+			" class=\"widget-title\"",
+			"[/siteorigin_widget]",
+			"<input type=\"hidden\"(.*?)>",
+			"\\[siteorigin(.*?)\\]",
+			"</div>",
+			"<div(.*?)>",
+			"^<div(.*?)>",
+			"\""
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"import * as PIXI from 'pixi.js/dist/pixi.js';",
+			"<path",
+			"ath",
+			"path",
+			"containerdimensions.h",
+			"containerdimensions.w",
+			"this.game.roundframe",
+			"this.game.margin",
+			"this.game.texture.get('img/",
+			"this.game.texture.load('img/",
+			"maxparticles",
+			"",
+			"slot",
+			".interaction.locationsceneedge",
+			".interaction.maxpanscene",
+			"",
+			"./assets",
+			"interaction",
+			"pixi.js.",
+			"element",
+			"private _",
+			"this.mark",
+			"this.scene",
+			"this.game.sceneH",
+			"setupScene",
+			"loadResources",
+			"huellas",
+			"",
+			"'"
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 49.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 108.0
+	},
+	"output.find_results":
+	{
+		"height": 242.0
+	},
+	"output.sftp":
+	{
+		"height": 471.0
+	},
+	"pinned_build_system": "",
+	"project": "learning.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"bg\\wip_alberto\\gamification\\node_modules\\phantomjs-prebuilt\\install.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 399.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

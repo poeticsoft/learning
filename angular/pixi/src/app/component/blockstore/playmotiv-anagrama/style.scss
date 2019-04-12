@@ -1,0 +1,36 @@
+	
+	@import "~scss/variable";
+	@import "~scss/mixin";
+	
+	block-playmotiv-anagrama {
+
+		display: block;
+		padding: 0 0 60% 0;
+		position: relative;
+
+		svg {
+
+			@include innerbox();
+
+			circle#anagrama-circle-dark-left {
+
+				fill: none;
+			    stroke: $Medium;
+				stroke-width: 19;
+				stroke-dasharray: 371;
+				stroke-dashoffset: 371;
+				cx: 82.368;
+			    cy: 119.784;
+			    r: 59.002;
+			    transform-origin: 82.368px 119.784px;
+			    transform: rotate(-90deg);
+			}
+		}
+
+		button {
+
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}

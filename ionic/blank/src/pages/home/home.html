@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank Canvas
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-scroll scrollY="true" class="modal-scroll" style="height:100px;width:100%;">
+    <ion-item *ngFor="let item of items">
+    </ion-item>
+  </ion-scroll>
+</ion-content>

@@ -1,0 +1,15 @@
+	
+	@import "~scss/variable";
+	@import "~scss/mixin";
+
+
+	.LabView {
+
+		padding: 0 0 100% 0;
+		position: relative;
+
+		svg {
+
+			@include innerbox();
+		}
+	}

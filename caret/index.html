@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>FLEX</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<style type="text/css">
+
+			@-webkit-keyframes blinker {
+				from { opacity: 1.0; }
+				to { opacity: 0.0; }
+			}
+
+			.Editable {
+
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			.Caret {
+
+				display: inline-block;
+				vertical-align: middle;
+				width: 6px;
+				height: 20px;
+				background-color: #000;
+				margin: 0 0 0 -20px;
+
+				-webkit-animation-name: blinker;
+				-webkit-animation-iteration-count: infinite;
+				-webkit-animation-timing-function: cubic-bezier(.5, 0, 1, 1);
+				-webkit-animation-duration: 0.5s;
+			}
+
+			#CaretField {
+
+
+			}
+
+		</style>
+	</head>
+	<body>
+		<input id="someid">
+		<span id="faux" style="display:none"></span><br/>
+		<span id="getpx"></span>
+		<script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+		<script>
+
+			var inputter = $('#someid')[0];
+			var faux = $('#faux');
+
+			function getCaret(el) { 
+
+			    if (el.selectionStart) { 
+
+			        return el.selectionStart; 
+
+			    } else if (document.selection) { 
+
+			        el.focus(); 
+
+			        var r = document.selection.createRange();
+
+			        if (r == null) {
+			         
+			            return 0; 
+			        } 
+
+			        var re = el.createTextRange(), 
+			            rc = re.duplicate(); 
+
+			        re.moveToBookmark(r.getBookmark()); 
+
+			        rc.setEndPoint('EndToStart', re); 
+
+			        return rc.text.length; 
+			    }  
+			    return 0; 
+			}
+
+			$("#someid").click( function( event ) {
+
+			    caretpos = getCaret(inputter);
+			    calcfaux = faux.text($(this).val().substring(0, caretpos));
+			    fauxpos = calcfaux.outerWidth();
+			    $("#getpx").text(fauxpos + " px");
+			});
+
+		</script>
+	</body>
+</html>

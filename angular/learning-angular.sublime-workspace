@@ -1,0 +1,348 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"th",
+				"themePath"
+			],
+			[
+				"max",
+				"max-width"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/learning/angular",
+		"/E/learning/angular/pixi",
+		"/E/learning/angular/pixi/src",
+		"/E/learning/angular/pixi/src/app",
+		"/E/learning/angular/pixi/src/app/component",
+		"/E/learning/angular/pixi/src/app/component/blockstore",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/scene",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section",
+		"/E/learning/angular/pixi/src/app/service"
+	],
+	"file_history":
+	[
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/section.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/element/position.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/section/cover.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/base.ts",
+		"/P/playmotiv/resources/foundation-html5-animation-w-javascript-master/html5-animation-source-code/examples/ch08/05-spring-1.html",
+		"/P/playmotiv/resources/foundation-html5-animation-w-javascript-master/html5-animation-source-code/examples/ch08/06-spring-2.html",
+		"/P/playmotiv/resources/foundation-html5-animation-w-javascript-master/html5-animation-source-code/examples/ch08/07-spring-3.html",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/rally.ts",
+		"/E/learning/angular/pixi/src/app/service/pixistyle.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/scene/parallax.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/component.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/scene/eventtest.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/scene/scene.ts",
+		"/E/learning/angular/pixi/src/app/component/blockstore/pixi/game/scene/events.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/base.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/section/cover.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/section/section.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/section/premios.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/section/general.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/section/podiums.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/section/rankings.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/scene/parallax.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/scene/scene.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/element/scene.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/component.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/element/parallax.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/element/section/rankings.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/element/section/premios.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/element/section/podiums.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/element/section/general.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/element/sections.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/game/element/section/cover.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/element/sections.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/section/cover.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/element/parallax.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/element/video.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/element/text.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/scene.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/playmotiv-anagrama/style.scss",
+		"/E/learning/angular/base/src/app/service/responsive.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/pixi/element/test.ts",
+		"/E/learning/angular/base/src/app/component/blockstore/playmotiv-anagrama/component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/blockstore/base/component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/blockstore/base/template.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/blockstore/playmotiv-anagrama/template.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/blockstore/playmotiv-anagrama/component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/blockstore/playmotiv-anagrama/style.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/module.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/polyfills.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/blockstore/base/style.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/block/style.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/section/style.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/section-group/style.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/nav/style.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/nav/component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/scss/variable.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/section/component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/section-group/component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/app/template.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/scss/common.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/section-group/template.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/section/template.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/template.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/style.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/block/component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/app/component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/template.html.bakc.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/store/playmotiv-anagrama/template.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/main.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/store/base/component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/store/playmotiv-anagrama/component.ts",
+		"/C/Users/alberto/noshibari-learning-angular.bat",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/service/api.service.spec.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/store/base/style.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/store/playmotiv-anagrama/style.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/app.module.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/app",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/store/playmotiv-anagrama/playmotiv.anagrama.component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/pipe/keys.pipe.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/pipe/keys.ts",
+		"/P/playmotiv/material/danone/fontvella-logo.svg",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/block.component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/nav/nav.component.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/app.component.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/nav/nav.component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/block/block.component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/section/section.component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/section/section.component.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/block/block.component.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/store/base/base.component.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/section-group/section-group.component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/layout/section-group/section-group.component.html",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/component/block/store/base/base.component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/service/block-loader.service.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/scss/mixin.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/app.component.scss",
+		"/E/noshibari/gdrive/learning/angular/base/src/app/app.component.ts",
+		"/E/noshibari/gdrive/learning/angular/base/src/styles.scss",
+		"/E/noshibari/gdrive/learning/angular/base-scss/src/index.html",
+		"/E/noshibari/gdrive/learning/angular/base-scss/src/app/test/test.component.ts",
+		"/E/noshibari/gdrive/learning/angular/base-scss/src/app/app.module.ts",
+		"/E/noshibari/gdrive/learning/angular/base-scss/src/scss/style.scss",
+		"/E/noshibari/gdrive/learning/angular/base-scss/dist/index.html",
+		"/E/software/nginx/conf/nginx.conf",
+		"/E/noshibari/gdrive/learning/angular/base-scss/dist/main.76de6763689a966323a6.bundle.js",
+		"/E/noshibari/gdrive/learning/angular/base-scss/src/app/app.component.scss",
+		"/E/noshibari/gdrive/learning/angular/base-scss/src/app/app.component.ts",
+		"/E/noshibari/gdrive/learning/angular/base-scss/angular-cli.json",
+		"/E/noshibari/gdrive/learning/angular/base-scss/src/styles.scss",
+		"/E/noshibari/gdrive/learning/angular/base-scss/src/scss/mixin.scss",
+		"/E/noshibari/gdrive/learning/angular/base-scss/src/scss/common.scss",
+		"/E/noshibari/gdrive/learning/angular/base-scss/src/app/app.component.html",
+		"/E/noshibari/gdrive/learning/angular/start/src/app/app.component.scss",
+		"/E/noshibari/gdrive/learning/angular/start/src/sass/mixin.scss",
+		"/E/noshibari/gdrive/learning/angular/start/src/sass/common.scss",
+		"/E/noshibari/gdrive/learning/angular/start/src/sass/style.scss",
+		"/E/noshibari/gdrive/learning/angular/start/src/sass/variable.scss",
+		"/E/noshibari/gdrive/learning/angular/start/src/app/app.component.html",
+		"/E/noshibari/gdrive/learning/angular/start/src/app/app.component.ts",
+		"/E/noshibari/gdrive/learning/angular/start/.git/config",
+		"/E/noshibari/gdrive/learning/angular/start/angular-cli.json",
+		"/E/playmotiv/repo/playmotiv.danone.app/src/app/app.component.ts",
+		"/E/playmotiv/repo/playmotiv.danone.app/src/modules/sales-point/components/splash/component.ts",
+		"/E/playmotiv/repo/playmotiv.danone.app/src/modules/common/components/sale-points-howtoamazon/template.html",
+		"/E/playmotiv/repo/playmotiv.danone.app/src/theme/components/sales-point-howtoamazon.scss",
+		"/E/playmotiv/repo/playmotiv.danone.app/src/theme/styles.scss",
+		"/E/playmotiv/repo/playmotiv.danone.app/src/theme/common.scss"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"sectionname",
+			"panticker",
+			"EventEmitter",
+			"background",
+			"PIXI.Ticker",
+			"this.stage.parallax",
+			"defaultMargin",
+			"scene",
+			"sceneH",
+			"{"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"circle",
+			"this.stage.scene",
+			"margin"
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 108.0
+	},
+	"output.find_results":
+	{
+		"height": 122.0
+	},
+	"output.sftp":
+	{
+		"height": 200.0
+	},
+	"pinned_build_system": "",
+	"project": "learning-angular.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 291.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

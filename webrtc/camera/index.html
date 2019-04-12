@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <title>COMANDO NOSHIBARI</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div id="camera">
+
+      <video autoplay></video>      
+      <canvas class="hidden"></canvas>
+
+      <button class="full"></button>
+      <button class="nofull hidden"></button>
+      <button class="select"></button>
+      <button class="take"></button>
+      <button class="nocanvas hidden"></button>
+      <button class="send hidden"></button>
+
+      <select>
+        <option value="">camara</option>
+      </select>
+
+      <div id="message"></div>
+
+    </div>
+    <script src="adapter.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

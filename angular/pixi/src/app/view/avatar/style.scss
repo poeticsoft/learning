@@ -1,0 +1,16 @@
+	
+	@import "~scss/variable";
+	@import "~scss/mixin";
+
+	avatar.view {
+
+		@include innerbox();
+		
+		block-avatar {
+
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			width: 250px;
+		}
+	}

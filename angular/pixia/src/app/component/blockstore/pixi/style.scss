@@ -1,0 +1,15 @@
+	
+	@import "~scss/variable";
+	@import "~scss/mixin";
+	
+	pixi {
+
+		@include innerbox();
+
+		canvas {
+
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+	}

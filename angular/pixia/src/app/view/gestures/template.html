@@ -1,0 +1,10 @@
+
+	<div class="GesturesView"
+		 (pan)="gesture($event, 'pan')"
+		 (pinch)="gesture($event, 'pinch')"
+		 (press)="gesture($event, 'press')"
+		 (rotate)="gesture($event, 'rotate')"
+		 (swipe)="gesture($event, 'swipe')"
+		 (tap)="gesture($event, 'tap')">
+		GESTURES VIEW {{ type }} {{ delta }} {{ velocity }}
+	</div>

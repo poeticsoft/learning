@@ -1,0 +1,25 @@
+	
+	@import "~scss/variable";
+	@import "~scss/mixin";
+
+	pixi.view {		
+
+		@include innerbox();
+
+		section-group,
+		section,
+		.blocks,
+		block,
+		block-pixi {		
+
+			@include innerbox();
+		}
+
+		block-avatar {
+
+			position: absolute;
+			top: $Margin;
+			right: $Margin;
+			width: 160px;
+		}
+	}

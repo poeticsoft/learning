@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>FLEX</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<style type="text/css">
+
+			/*https://medium.freecodecamp.org/understanding-flexbox-everything-you-need-to-know-b4013d4dc9af */
+
+			html, body {
+
+				height: 100%;
+			}
+
+			body {
+
+				padding: 30px;
+			}
+
+			ul {
+
+				border: 1px solid red;
+				padding: 0;
+				list-style: none;
+				background-color: #eee;
+				height: 80%;
+
+				display: flex;
+
+				/* Defaults */
+				
+				/*
+				flex-flow: row nowrap;
+				flex-direction: row;			 
+				flex-wrap: nowrap;
+				*/
+
+				/* justify-content: flex-start; 	main axis alignment */
+				/* align-items: center; 			Cross axis alignment */
+				/* align-content: stretch;			Multiline cross axis alignment */
+			}
+
+			li {
+
+				background-color: #ccc;
+
+				/* order: 0;  */
+
+				/* flex: 0 1 auto; > flex: default; */;
+				/* flex: 0 0 auto; > flex: none; */;
+				/* flex: 1 1 auto; > flex: auto; */;
+				/* flex: 2 1 0; > flex: 2; */;
+				/*
+				flex-grow: 2; 
+				flex-srink: 1; 
+				flex-basis: 0;
+				*/
+
+				flex: 0 0 auto;
+			    border: 1px solid red;
+			    margin: 10px;
+			}
+
+			li:nth-child(1) {
+
+				margin: 10px auto;
+			}
+
+		</style>
+	</head>
+	<body>
+		<!--
+		<ul>
+			<li class="a">word</li>
+			<li class="b">word word</li>
+			<li class="c">word word word</li>
+			<li class="d">word word word word</li>
+		</ul>
+		-->
+		<ul>
+			<li>Branding</li>
+			<li>Home</li>
+			<li>Services</li>
+			<li>About</li>
+			<li>Contact</li>
+		</ul>
+	</body>
+</html>

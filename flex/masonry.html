@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>FLEX</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<style type="text/css">
+
+			/*
+			
+			https://medium.freecodecamp.org/understanding-flexbox-everything-you-need-to-know-b4013d4dc9af
+			https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+			https://codeburst.io/how-to-pure-css-masonry-layouts-a8ede07ba31a
+
+			*/
+
+			html, body {
+
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+
+				padding: 30px;
+				display: flex;
+				flex-flow: column wrap;
+				align-items: flex-start; 
+
+				/* justify-content: flex-start; 	main axis alignment */
+				/* align-items: center; 			Cross axis alignment */
+				/* align-content: stretch;			Multiline cross axis alignment */
+			}
+
+			body * {
+
+				box-sizing: border-box;
+			}
+
+			div {
+
+				border: 1px solid red;
+				padding: 0;
+				list-style: none;
+				background-color: #eee;
+				width: 50%;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+		<div><br/><br/><br/><br/><br/><br/><br/></div>
+		<div><br/><br/><br/><br/><br/><br/><br/></div>
+		<div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+		<div><br/><br/><br/><br/><br/></div>
+	</body>
+</html>
