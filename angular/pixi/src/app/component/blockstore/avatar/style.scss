@@ -1,0 +1,88 @@
+	
+	@import "~scss/variable";
+	@import "~scss/mixin";
+
+	block-avatar {
+
+    	transform-origin: 100% 0%;
+		transform: scale(0.5);
+    	transition: transform 0.5s;
+
+		&.editing {
+
+			transform: scale(1);
+		}
+
+		.Avatar {
+				
+			border-radius: 50%;
+			position: relative;
+			padding: 0 0 100% 0;
+			width: 100%;
+			cursor: pointer;
+
+			svg {
+
+				position: absolute;
+
+				#dress,
+				#hair,
+				#glass,
+				#laze,
+				#bear {
+
+					> g {
+
+						display: none;
+
+						&.actual {
+
+							display: inherit;
+						}
+					}
+				}	
+			}
+		}
+
+		.Menu {
+
+			margin: $Margin / 2 0 0 0;
+			text-align: center;
+
+			.Section {
+
+				display: inline-block;
+				vertical-align: top;
+
+				.Element {
+
+					width: $Margin * 1.5;	
+					height: $Margin * 1.5;
+					background-color: $White;	
+					border-radius: 50%;
+					cursor: pointer;
+
+					&.actual {
+
+						background-color: $LightMedium;
+					}
+				}
+
+				.Element + .Element {
+
+					margin: $Margin / 4 0 0 0;
+				}
+			}
+
+			.Section + .Section {
+
+				margin: 0 0 0 $Margin / 2;
+			}
+
+			ui-button {
+
+				width: 100%;
+				margin: $Margin / 2 0 0 0;
+			}
+		}
+	}

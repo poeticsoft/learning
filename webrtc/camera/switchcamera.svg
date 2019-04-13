@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="55px"
+	 height="55px" viewBox="0 0 55 55" enable-background="new 0 0 55 55" xml:space="preserve">
+	<g id="switch_camera">
+		<g display="inline">
+			<g>
+				<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M40.224,36.5c-2.823,3.983-7.47,6.583-12.724,6.583
+					c-6.934,0-12.81-4.528-14.832-10.789"/>
+				<g>
+					<polygon fill="#FFFFFF" points="36.803,35.73 42.32,32.331 42.507,38.81 					"/>
+				</g>
+			</g>
+		</g>
+		<g display="inline">
+			<g>
+				<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M14.798,18.471c2.824-3.967,7.46-6.554,12.702-6.554
+					c6.913,0,12.774,4.501,14.813,10.732"/>
+				<g>
+					<polygon fill="#FFFFFF" points="18.218,19.248 12.692,22.635 12.521,16.156 					"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

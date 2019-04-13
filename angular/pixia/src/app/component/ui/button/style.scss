@@ -1,0 +1,11 @@
+	
+	@import "~scss/variable";
+	@import "~scss/mixin";
+	
+	ui-button {
+
+		display: inline-block;
+		background-color: $Light;
+		padding: $Margin / 2 $Margin;
+		box-sizing: border-box;
+	}

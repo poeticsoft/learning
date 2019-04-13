@@ -1,0 +1,14 @@
+
+<h4>Clients [{{ clients.length }}]</h4>
+<div class="Tools">
+	<button #Emit>EMIT</button>
+	<button (click)="addClient()">ADD</button>
+	<button (mousedown)="startBurst()"
+					(mouseup)="stopBurst()">BURST</button>
+</div>
+<div class="Clients">
+	<div class="Client"
+		  *ngFor="let client of clients">
+		{{ client.name }}
+	</div>
+</div>

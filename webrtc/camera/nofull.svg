@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="55px"
+	 height="55px" viewBox="0 0 55 55" enable-background="new 0 0 55 55" xml:space="preserve">
+	<g id="no_full">
+		<polyline display="inline" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="42.768,18.167 36.833,18.167 
+			36.832,12.233 		"/>
+		<polyline display="inline" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="36.833,42.768 36.833,36.833 
+			42.767,36.832 		"/>
+		<polyline display="inline" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="12.232,36.833 18.167,36.833 
+			18.168,42.767 		"/>
+		<polyline display="inline" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="18.167,12.232 18.167,18.167 
+			12.233,18.168 		"/>
+	</g>
+</svg>

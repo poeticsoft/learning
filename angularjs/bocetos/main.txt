@@ -1,0 +1,1275 @@
+
+// Datos de conexión y consulta a la base de datos
+
+var DataBase = 'VMBB';// Base de datos a la que queremos consultar
+
+var show_estados = 'VMBB.dbo.PP_Show_AP_Estados_PlusAll';
+var show_tiposplan = 'VMBB.dbo.PP_Show_AP_TiposPlan_PlusAll';
+var show_clientes = 'VMBB.dbo.PP_Show_AP_Clientes_PlusAll';
+var show_tiposincidencia = 'VMBB.dbo.PP_Show_AP_TipoIncidente_PlusAll';
+var show_responsables = 'VMBB.dbo.PP_Show_AP_Responsables_PlusAll';
+var show_proyectos = 'VMBB.dbo.PP_Show_AP_Proyectos_PlusAll';
+
+var planes_Create = 'VMBB.dbo.PP_AP_UpdateAPI'; 
+var planes_Update = 'VMBB.dbo.PP_AP_UpdateAPI'; 
+var planes_Read = 'VMBB.dbo.PP_Show_ActionPlans';
+var planes_Destroy = 'VMBB.dbo.PP_AP_Delete'; 
+var planes_Mail = 'VMBB.dbo.PP_SendMail_Changes_AP'; 
+var findUser = 'VMBB.dbo.PP_EmpleadoInfoByUID'; 
+var base_graph = 'VMBB.dbo.PP_Base_TrustCurve';
+
+var show_estados_DS;
+var show_tiposplan_DS;
+var show_clientes_DS;
+var show_tiposincidencia_DS;
+var show_responsables_DS;
+var show_responsables_DS_activos;
+var show_proyectos_DS;
+var show_planes_DS;
+
+var array_estados = {};
+var array_tiposplan = {};
+var array_clientes = {};
+var array_tiposincidencia = {};
+var array_responsables = {};
+var array_responsables_activos = {};
+var array_proyectos = {};
+
+var json_estados = {};
+var json_tiposplan = {};
+var json_clientes = {};
+var json_tiposincidencia = {};
+var json_responsables = {};
+var json_responsables_activos = {};
+var json_proyectos = {};
+
+var show_graph_DS;
+var findUser_DS;
+
+var getFieldName;
+var show_tiposincidencia_DS;
+var BuscaPlanes;
+
+var apiLocation = 'http://rpas022a:4040';
+var today = TodayDate();
+var MyIDPA = 0
+
+var suser = {"remotehost":"", "user":"", "error":"", "idempleado":"", "nombreEmpleado":"", "mode":""};
+
+function TodayDate() {
+	var mydate = new Date();
+ 	return mydate.getDate() + "/" + (mydate.getMonth()+1) + "/" + mydate.getFullYear(); 
+} 
+
+var backgroundInterval = setInterval(function () {
+    $(".divtoBlink").css("color", function () {
+        this.switch = !this.switch
+        return this.switch ? "orange" : ""
+    });
+}, 250)
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+$(document).ready(function () {
+
+	var today = TodayDate();  // fecha de hoy - Default for new records
+
+	// Escondemos el campo que muestra los mensajes de error
+	$('.errors').hide();
+
+	// Metodo para mostrar los errores
+	function showErrors(E) {
+
+		$('.errors').html(E.errors || 'Connection error: ' + E.status);
+		$('.errors').fadeIn();
+
+		setTimeout(function () {
+
+			// Escondemos el mensaje de error despues de 3 segundos
+
+			$('.Errors').fadeOut(1000);
+		}, 3000);
+	}
+
+	// ------------- DATASOURCES ---------------------
+
+	show_estados_DS = new kendo.data.DataSource({
+		transport: {
+			read: {
+				url: apiLocation +'/api/sqlprocedure',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				processData: false,
+				data: { Conn: DataBase, ProcName: show_estados }
+			},
+			parameterMap: function (Data) { return JSON.stringify(Data); }
+		},
+		schema: {
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos
+			errors: function (Response) {
+
+				if (Response.Status == 'KO') { return Response.Message; }
+				return null;
+			}
+		},
+		requestEnd: function(e) {
+			var response = e.response;
+			json_estados = {};
+			array_estados = {};
+            if(response){
+				// prepara los objetos de datos en cache
+				json_estados = response.Data; 
+				_.forEach(json_estados, function(ID, Index) {
+					array_estados[ID.IDEstado] = ID.DenoEstado ;				
+				});
+				console.log(json_estados);
+				//console.log(array_estados);
+			}
+		},		
+		error: showErrors
+	});
+
+	show_tiposplan_DS = new kendo.data.DataSource({
+		transport: {
+			read: {
+				url: apiLocation + '/api/sqlprocedure',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				processData: false,
+				data: { Conn: DataBase, ProcName: show_tiposplan }
+			},
+			parameterMap: function (Data) { return JSON.stringify(Data); }
+		},
+		schema: {
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos
+			errors: function (Response) {
+
+				if (Response.Status == 'KO') { return Response.Message; }
+				return null;
+			}
+		},
+		requestEnd: function(e) {
+			var response = e.response;
+			json_tiposplan = {};
+			array_tiposplan = {};
+            if(response){
+				// prepara los objetos de datos en cache
+				json_tiposplan = response.Data; //show_estados_DS.data().toJSON();
+				_.forEach(json_tiposplan, function(ID, Index) {
+					array_tiposplan[ID.IDTipoPlan] = ID.DenoTipoPlan ;
+				});
+				console.log(json_tiposplan);
+				//console.log(array_tiposplan);
+			}
+		},		
+		error: showErrors
+	});
+
+	show_clientes_DS = new kendo.data.DataSource({
+		transport: {
+			read: {
+				url: apiLocation + '/api/sqlprocedure',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				processData: false,
+				data: { Conn: DataBase, ProcName: show_clientes }
+			},
+			parameterMap: function (Data) { return JSON.stringify(Data); }
+		},
+		schema: {
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos
+			errors: function (Response) {
+
+				if (Response.Status == 'KO') { return Response.Message; }
+				return null;
+			}
+		},
+		requestEnd: function(e) {
+			var response = e.response;
+			json_clientes = {};
+			array_clientes = {};			
+            if(response){
+				// prepara los objetos de datos en cache
+				json_clientes = response.Data;
+				_.forEach(json_clientes, function(ID, Index) {
+			 		array_clientes[ID.IDCliente] = ID.DenoCliente ;				
+				});
+				//console.log(json_clientes);
+				//console.log(array_clientes);
+			}
+		},				
+		error: showErrors
+	});
+
+	show_tiposincidencia_DS = new kendo.data.DataSource({
+		transport: {
+			read: {
+				url: apiLocation + '/api/sqlprocedure',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				processData: false,
+				data: { Conn: DataBase, ProcName: show_tiposincidencia }
+			},
+			parameterMap: function (Data) { return JSON.stringify(Data); }
+		},
+		schema: {
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos,
+			errors: function (Response) {
+				if (Response.Status == 'KO') { return Response.Message; }
+
+				return null;
+			}
+		},
+		requestEnd: function(e) {
+			var response = e.response;
+			json_tiposincidencia = {};
+			array_tiposincidencia = {};					
+            if(response){
+				// prepara los objetos de datos en cache
+				json_tiposincidencia = response.Data;
+				_.forEach(json_tiposincidencia, function(ID, Index) {
+			 		array_tiposincidencia[ID.IDTipoIncidente] = ID.DenoTipoIncidente ;				
+				});
+				//console.log(json_tiposincidencia);
+				//console.log(array_tiposincidencia);
+			}
+		},				
+
+		error: showErrors
+	});
+
+	show_responsables_DS = new kendo.data.DataSource({
+		transport: {
+			read: {
+				url: apiLocation + '/api/sqlprocedure',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				processData: false,
+				data: { Conn: DataBase, ProcName: show_responsables }
+			},
+			parameterMap: function (Data) { 
+				Data.ShowDeleted = true;
+				return JSON.stringify(Data); 
+			}
+		},
+		schema: {
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos
+			errors: function (Response) {
+				if (Response.Status == 'KO') { return Response.Message; }
+
+				return null;
+			}
+		},
+		requestEnd: function(e) {
+			var response = e.response;
+			json_responsables = {};
+			array_responsables = {};				
+            if(response){
+				// prepara los objetos de datos en cache
+				json_responsables = response.Data;
+				_.forEach(json_responsables, function(ID, Index) {
+			 		array_responsables[ID.IDEmpleado] = ID.NombreCompleto ;				
+				});	
+				//console.log(json_responsables);
+				//console.log(array_responsables);
+			}
+		},				
+
+		error: showErrors
+	});
+
+	show_responsables_DS_activos = new kendo.data.DataSource({
+		transport: {
+			read: {
+				url: apiLocation + '/api/sqlprocedure',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				processData: false,
+				data: { Conn: DataBase, ProcName: show_responsables }
+			},
+			parameterMap: function (Data) { 
+				Data.ShowDeleted = false;
+				return JSON.stringify(Data); 
+			}
+		},
+		// filter: [
+		// 	{field: "IsDeleted", operator: "eq", value: "0"}
+		// ],
+		schema: {
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos
+			errors: function (Response) {
+				if (Response.Status == 'KO') { return Response.Message; }
+				return null;
+			}
+		},
+		requestEnd: function(e) {
+			var response = e.response;
+			json_responsables_activos = {};
+			array_responsables_activos = {};				
+            if(response){
+				// prepara los objetos de datos en cache
+				json_responsables_activos = response.Data;
+				_.forEach(json_responsables_activos, function(ID, Index) {
+			 		array_responsables_activos[ID.IDEmpleado] = ID.NombreCompleto ;				
+				});
+				//console.log(json_responsables_activos);
+				//console.log(array_responsables_activos);
+			}
+		},						
+		error: showErrors
+	});
+
+	show_proyectos_DS = new kendo.data.DataSource({
+		transport: {
+			read: {
+				url: apiLocation + '/api/sqlprocedure',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				processData: false,
+				data: { Conn: DataBase, ProcName: show_proyectos }
+			},
+			parameterMap: function (Data) { return JSON.stringify(Data); }
+		},
+		schema: {
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos
+			errors: function (Response) {
+				if (Response.Status == 'KO') { return Response.Message; }
+				return null;
+			}
+		},
+		requestEnd: function(e) {
+			var response = e.response;
+			json_proyectos = {};
+			array_proyectos = {};				
+            if(response){
+				// prepara los objetos de datos en cache
+				json_proyectos = response.Data;
+					_.forEach(json_proyectos, function(ID, Index) {
+			 		array_proyectos[ID.IDProyecto] = ID.DenoProyecto ;				
+				});
+				//console.log(json_proyectos);
+				//console.log(array_proyectos);
+			}
+		},							
+		error: showErrors
+	});
+
+	envia_mail_DS = new kendo.data.DataSource({
+		transport: {
+			read: {
+				url: apiLocation + '/api/sqlprocedure',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				processData: false,
+				data: { Conn: DataBase, ProcName: planes_Mail}
+			},
+			parameterMap: function (Data) { return JSON.stringify(Data); }
+		},
+		schema: {
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos
+			errors: function (Response) {
+				if (Response.Status == 'KO') { return Response.Message; }
+
+				return null;
+			}
+		},
+		error: showErrors
+	});
+
+
+	findUser_DS = new kendo.data.DataSource({
+		transport: {
+			read: {
+				url: apiLocation + '/api/sqlprocedure',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				processData: false,
+				data: { Conn: DataBase, ProcName: findUser}
+			},
+			parameterMap: function (Data) { 
+				Data.UIDUser = suser.user;
+				return JSON.stringify(Data); 
+			}
+		},
+		schema: {
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos
+			errors: function (Response) {
+				if (Response.Status == 'KO') { return Response.Message; }
+
+				return null;
+			}
+		},
+
+		error: showErrors
+	});
+
+	var date_picker = $("#date_picker").kendoDatePicker({
+		  value: new Date(),
+		  format: "dd/MM/yyyy",
+		  weekNumber: true,
+ 		  month: { weekNumber: $("#date_picker").html() },
+		  animation: {
+			   close: { effects: "fadeOut zoom:out", duration: 300 },
+			   open: {  effects: "fadeIn zoom:in", duration: 300 }
+		  }
+	}).data("kendoDatePicker");
+
+	var combo_estados = $("#combo_estados").kendoDropDownList({
+		autoWidth: true,
+		autoBind: true,	
+		dataTextField: "DenoEstado",
+		dataValueField: "IDEstado",
+		minLength: 3,
+		dataSource: json_estados,
+		change: BuscaPlanes		
+	}).data("kendoDropDownList");
+
+	var combo_tiposplan = $("#combo_tiposplan").kendoDropDownList({
+		autoWidth: true,
+		autoBind: true,	
+		dataTextField: "DenoTipoPlan",
+		dataValueField: "IDTipoPlan",
+		minLength: 3,
+		dataSource: json_tiposplan,
+		change: BuscaPlanes		
+	}).data("kendoDropDownList");
+
+	var combo_clientes = $("#combo_clientes").kendoDropDownList({
+		autoWidth: true,
+		autoBind: true,	
+		dataTextField: "DenoCliente",
+		dataValueField: "IDCliente",
+		minLength: 3,
+		dataSource: json_clientes,
+		change: BuscaPlanes		
+	}).data("kendoDropDownList");
+
+	var combo_tiposincidencia = $("#combo_tiposincidencia").kendoDropDownList({
+		autoWidth: true,
+		autoBind: true,	
+		dataTextField: "DenoTipoIncidente",
+		dataValueField: "IDTipoIncidente",
+		minLength: 3,
+		dataSource: json_tiposincidencia,
+		change: BuscaPlanes		
+	}).data("kendoDropDownList");
+
+	var combo_responsables = $("#combo_responsables").kendoDropDownList({
+		autoWidth: true,
+		autoBind: true,	
+		dataTextField: "NombreCompleto",
+		dataValueField: "IDEmpleado",
+		minLength: 3,
+		dataSource: json_responsables_activos,
+		change: BuscaPlanes		
+	}).data("kendoDropDownList");
+	
+	var combo_proyectos = $("#combo_proyectos").kendoDropDownList({
+		autoWidth: true,
+		autoBind: true,	
+		dataTextField: "DenoProyecto",
+		dataValueField: "IDProyecto",
+		minLength: 3,
+		dataSource: json_proyectos,
+		change: BuscaPlanes
+	}).data("kendoDropDownList");
+
+	var planes_DS_Config = {
+		url: apiLocation + '/api/sqlprocedure',
+		type: 'POST',
+		dataType: 'json',
+		contentType: 'application/json',
+		processData: false,
+		data: { 
+			Conn: DataBase
+		}
+	};
+
+	var planes_DS_Config_Create = _.merge({}, planes_DS_Config, { data: { ProcName: planes_Create }});
+	var planes_DS_Config_Update =  _.merge({}, planes_DS_Config, { data: { ProcName: planes_Update }});
+	var planes_DS_Config_Read =  _.merge({}, planes_DS_Config, { data: { ProcName: planes_Read }});
+	var planes_DS_Config_Destroy =  _.merge({}, planes_DS_Config, { data: { ProcName: planes_Destroy }});
+	
+	show_planes_DS = new kendo.data.DataSource({
+		serverPaging: false,
+		//serverSorting: true,
+		//serverFiltering: true,
+		//serverAggregates: true,
+		//serverGrouping: true,
+
+        pageSize: 50,
+		transport: {					
+			
+			read: planes_DS_Config_Read,
+			update: planes_DS_Config_Update,
+			destroy: planes_DS_Config_Destroy,
+			create: planes_DS_Config_Create,
+
+			parameterMap: function(Data, Type) {
+					switch(Type) {
+ 						case 'read': 
+						      	console.log('DS_Read!!');
+ 						break;
+						case 'update': 	
+						        console.log('DS_Update!!');
+								//console.log(Data);
+
+								if(Data.IDPA > 0 && Data.IDStatus && Data.IDTipoPlan && 
+								  Data.IDCliente && Data.IDTipoIncidente && Data.IDProyecto && 
+								  Data.IDResponsable) {
+										Data.FechaDeteccion = MyformatDate(Data.FechaDeteccion) || null;
+										Data.NivelTop = Data.NivelTop || 100;
+										Data.Piezas_Afectadas = Data.Piezas_Afectadas || 1;
+										Data.FechaContencion = MyformatDate(Data.FechaContencion) || null;
+										Data.FechaPrevista = MyformatDate(Data.FechaPrevista) || null;
+										Data.Fecha_Cierre = MyformatDate(Data.Fecha_Cierre) || null;
+
+										Data.UID = suser.user;
+										Data.Terminal = suser.remotehost;
+										Data.IDEmpleado = suser.idempleado;
+								} else {
+									alert("AVISO: Registro INCOMPLETO, debe cumplimentar los campos de clasificación (*).");
+								};
+
+						break;
+						case 'destroy': 	
+						        console.log('DS_Destroy!!');
+						        // console.log(Data);
+						break;
+						case 'create': 	
+						        console.log('DS_Create!!');
+								// console.log(Data);
+
+								if(Data.IDStatus && Data.IDTipoPlan && Data.IDCliente &&
+								  Data.IDTipoIncidente && Data.IDProyecto && Data.IDResponsable)	{
+									Data.IDPA = 0;
+									Data.FechaDeteccion = MyformatDate(Data.FechaDeteccion) || Date();
+									Data.NivelTop = Data.NivelTop || 100;
+									Data.Piezas_Afectadas = Data.Piezas_Afectadas || 1;
+									Data.FechaContencion = MyformatDate(Data.FechaContencion) || '';
+									Data.FechaPrevista = MyformatDate(Data.FechaPrevista) || '';
+									Data.Fecha_Cierre = MyformatDate(Data.Fecha_Cierre) || '';
+
+									Data.UID = suser.user;
+									Data.Terminal = suser.remotehost;
+									Data.IDEmpleado = suser.idempleado;
+
+								}
+								else {
+									alert("AVISO: Registro INCOMPLETO, debe cumplimentar los campos de clasificación (*).");
+								}
+
+						break;
+					}
+
+					return JSON.stringify(Data);
+				}
+			},
+		schema: {
+			model: {
+				id: "IDPA",
+				fields: {
+					IDPA: { type: 'number' , defaultValue: 0},
+
+					IDStatus: { type: 'string'},
+					// IDStatus: { type: 'string', defaultValue: (combo_estados.value() || '' ), validation: { required: true, idstatusvalidation: function(input) {
+					// 	input.attr("data-idstatusvalidation-msg", "Indique el Estado."); return input.val() != '' }}},
+
+					IDTipoPlan: { type: 'string'},
+					// IDTipoPlan: { type: 'string', defaultValue: (combo_tiposplan.value() || ''), validation: { required: true, idtipoplanvalidation: function(input) {
+					// 	input.attr("data-idtipoplanvalidation-msg", "Indique tipo de Action Plan."); return input.val() != '' }}},
+
+					IDCliente: { type: 'string'},
+					// IDCliente: { type: 'string' , defaultValue: (combo_clientes.value() || ''), validation: { required: true, idclientevalidation: function(input) {
+					// 	input.attr("data-idclientevalidation-msg", "Indique el cliente."); return input.val() != '' }}},
+					
+					IDTipoIncidente: { type: 'string'},
+					// IDTipoIncidente: { type: 'string' , defaultValue: (combo_tiposincidencia.value() || ''), validation: { required: true, idtipoincidentevalidation: function(input) {
+					// 	input.attr("data-idtipoincidentevalidation-msg", "Indique el tipo de Incidente."); return input.val() != '' }}},
+
+					IDProyecto: { type: 'string'},
+					// IDProyecto: { type: 'string', defaultValue: (combo_proyectos.value() || ''), validation: { required: true, idproyectovalidation: function(input) {
+					// 	input.attr("data-idproyectovalidation-msg", "Indique el proyecto."); return input.val() != '' }}},
+
+					IDResponsable: { type: 'string'},
+					// IDResponsable: { type: 'string', defaultValue: (combo_responsables.value() || ''), validation: { required: true, idresponsablevalidation: function(input) {
+					// 	input.attr("data-idresponsablevalidation-msg", "Indique el responsable de la Acción."); return input.val() != '' }} },
+
+					FechaDeteccion: { type: 'string'},
+					// FechaDeteccion: { type: 'string', defaultValue: Date(), validation: { required: true, idfechadeteccionvalidation: function(input) {
+					// 	input.attr("data-idfechadeteccionvalidation-msg", "Indique la fecha de detección."); return input.val() != '' }}},
+					
+					NivelTop: { type: 'number', defaultValue: 100, validation: { required: true, min: 1 , max: 100} },
+
+					Descripcion:{ type: 'string', defaultValue: '' , validation: { required: true} },
+					Piezas_Afectadas: { type: 'number', defaultValue: 1, validation: { required: true, min: 0 } },
+
+					Contencion: { type: 'string', defaultValue: ''},
+
+					FechaContencion: { type: 'string'},
+					// FechaContencion: { type: 'string', defaultValue: Date(), validation: { required: true, idfechacontencionvalidation: function(input) {
+					// 	input.attr("data-idfechacontencionvalidation-msg", "Indique la fecha contención."); return input.val() != '' }}},
+
+					CausaRaiz: { type: 'string', defaultValue: ''},
+					Acciones: { type: 'string', defaultValue: ''},
+					
+					FechaPrevista: { type: 'string'},
+					// FechaPrevista: { type: 'string', defaultValue: Date(), validation: { required: true, idfechaprevistavalidation: function(input) {
+					// 	input.attr("data-idfechaprevistavalidation-msg", "Indique la fecha prevista."); return input.val() != '' }}},
+					
+					Fecha_Cierre: { type: 'string'},
+					// Fecha_Cierre: { type: 'string', defaultValue: Date(), validation: { required: true, idfechacierrevalidation: function(input) {
+					// 	input.attr("data-idfechacierrevalidation-msg", "Indique fecha de cierre."); return input.val() != '' }}},
+					
+					Efectividad: { type: 'string', defaultValue: ''},
+					Transversalizacion: { type: 'string', defaultValue: ''},
+
+					RegUpdateEmpleado: { type: 'string', defaultValue: ''},
+					RegUpdateDateTime: { type: 'string', defaultValue: ''}
+				}
+			},
+
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos
+
+			total: function(Response) {
+				return Response.Data.length;
+			},
+
+			errors: function(Response) {
+				if(Response.Status == 'KO') { return Response.Message; }
+				return null;
+			}
+		},
+		//batch: true,
+		error: showErrors,
+	});
+
+	getFieldName = function(IDNames, IDs, ReturnName, ArrayData) {
+		return ArrayData ? ArrayData[IDs]: IDs;
+	};
+
+	var grid_planes = $("#grid_planes").kendoGrid({
+			dataSource:	show_planes_DS,
+	        serverPaging: false,
+			//serverSorting: true,
+	        //serverFiltering: true,					
+
+			pageSize: 50,
+			pageable: { refresh: false, pageSizes: [50, 200, 500, "all"], buttonCount: 10, info: true },
+
+			navigatable: true,
+	   		selectable: "single row",
+	  		filterable: {extra : true},
+			autoBind: true,
+			sortable: true,
+			
+			reorderable: true,
+			resizable: true,
+			columnMenu: true,
+
+			heigth: '100%',
+			width: '100%',
+			toolbar: ["create", "save", "cancel", "read","filtersOFF"],
+
+	 		editable: {
+		    	mode: "incell",
+	    		update: true,
+	  		},
+
+	  	 	//scrollable: {virtual: true },
+
+			create: function(E){
+	 			console.log('created!!');
+	  		},
+
+	  		edit: function(E) {
+				var Model = E.model;
+				console.log('Edit!!');
+				//console.log(Model);
+
+				if(Model.isNew() && !Model.dirty) {
+					console.log('Edit - Default values');
+
+					Model.set('IDPA', 0);
+					Model.set('IDStatus', combo_estados.value());
+					Model.set('IDTipoPlan', combo_tiposplan.value());
+					Model.set('IDCliente', combo_clientes.value());
+					Model.set('IDTipoIncidente', combo_tiposincidencia.value());
+					Model.set('IDProyecto', combo_proyectos.value());
+					Model.set('IDResponsable', combo_responsables.value());
+					Model.set('FechaDeteccion', Date());
+				}
+
+					 Model.set('FechaDeteccion', MyformatDate(Model.get('FechaDeteccion')) || null );
+					 Model.set('NivelTop', Model.get('NivelTop') || 100 );
+					 Model.set('Descripcion', Model.get('Descripcion') || '' );
+					 Model.set('Piezas_Afectadas', Model.get('Piezas_Afectadas') || 0 );
+					 Model.set('Contencion', Model.get('Contencion') || '' );
+					 Model.set('FechaContencion', MyformatDate(Model.get('FechaContencion')) || null );
+					 Model.set('CausaRaiz', Model.get('CausaRaiz') || '' );
+					 Model.set('Acciones', Model.get('Acciones') || '' );
+					 Model.set('FechaPrevista', MyformatDate(Model.get('FechaPrevista')) || null );
+					 Model.set('Fecha_Cierre', MyformatDate(Model.get('Fecha_Cierre')) || null );
+					 Model.set('Efectividad', Model.get('Efectividad') || '' );
+					 Model.set('Transversalizacion', Model.get('Transversalizacion') || '' )
+				},
+
+			columns: [	{ field: 'IDPA', title: 'ID'
+						 , attributes: { "class": "# if(data.IDResponsable != data.RegUpdateEmpleado) { # divtoBlink # } else { # nada # } #" }
+						 , type: 'number', width: 90 , editable: function(dataitem){ return false } },
+
+						{ field: 'IDStatus', title: 'Estado (*)',  width: 180  ,filterable: { multi: true,	search: true }, attributes: { class: "mandatory"}
+						  ,editor: IDStatus_DropDownEditor , template: '<span>#= getFieldName(["IDEstado"], [IDStatus], "DenoEstado", array_estados ) #</span>'
+						},
+
+						{ field: 'IDTipoPlan', title: 'Tipo (*)', width: 150 ,filterable: { multi: true, search: true }, attributes: { class: "mandatory"}
+						  ,editor: IDTipoPlan_DropDownEditor , template: '<span>#= getFieldName(["IDTipoPlan"], [IDTipoPlan], "DenoTipoPlan", array_tiposplan ) #</span>'
+						},
+
+						{ field: 'IDCliente', title: 'Cliente (*)', width: 170, filterable: { multi: true,	search: true }, attributes: { class: "mandatory"}
+						  ,editor: IDCliente_DropDownEditor , template: '<span>#= getFieldName(["IDCliente"], [IDCliente], "DenoCliente", array_clientes ) #</span>'
+						},
+
+						{ field: 'IDTipoIncidente', title: 'Incidente (*)', width: 150, filterable: { multi: true,	search: true }, attributes: { class: "mandatory"}
+						  ,editor: IDTipoIncidente_DropDownEditor, template: '<span>#= getFieldName(["IDTipoIncidente"], [IDTipoIncidente], "DenoTipoIncidente", array_tiposincidencia ) #</span>'
+						},
+
+						{ field: 'IDProyecto', title: 'Proyecto (*)', width: 150, filterable: { multi: true, search: true }, attributes: { class: "mandatory"}
+						 ,editor: IDProyecto_DropDownEditor,  template: '<span>#= getFieldName(["IDProyecto"], [IDProyecto], "DenoProyecto", array_proyectos ) #</span>'
+						},
+
+						{ field: 'IDResponsable', title: 'Responsable (*)', type: 'string' ,width: 350, filterable: { multi: true,	search: true }, attributes: { class: "mandatory"}
+						 ,editor: IDResponsable_DropDownEditor, template: '<span>#= getFieldName(["IDEmpleado"], [IDResponsable], "NombreCompleto", array_responsables ) #</span>'
+						},
+
+						{ field: 'FechaDeteccion', title: 'Fecha Detección', type: 'string', width: 130
+						 , editor: Date_DataPickerEditor
+						 , template: '<span>#= FechaDeteccion ? kendo.toString(new Date(FechaDeteccion), "dd/MM/yyyy"): "" #</span>'
+						},
+
+						{ field: 'NivelTop', title: 'NivelTop', type: 'number', width: 130},
+						{ field: 'Descripcion', title: 'Desviation' , width: 350 },
+						{ field: 'Piezas_Afectadas', title: 'Piezas', width: 100 },
+						{ field: 'Contencion', title: 'Contención', width: 350 },
+
+						{ field: 'FechaContencion', title: 'Fecha Contención', type: 'string', width: 150
+						  , editor: Date_DataPickerEditor 
+						  , template: '<span>#= FechaContencion ? kendo.toString(new Date(FechaContencion), "dd/MM/yyyy"): "" #</span>'
+						},
+
+						{ field: 'CausaRaiz', title: 'Causa Raiz', width: 350 },
+						{ field: 'Acciones', title: 'Acciones', width: 350 },
+
+						{ field: 'FechaPrevista', title: 'Fecha Prevista', type: 'string', width: 160
+						  , editor: Date_DataPickerEditor
+						  , template: '<span>#= FechaPrevista ? kendo.toString(new Date(FechaPrevista), "dd/MM/yyyy"): "" #</span>'
+						},
+
+						{ field: 'Fecha_Cierre', title: 'Fecha Cierre', type: 'string', width: 160
+						  , editor: Date_DataPickerEditor 
+						  , template: '<span>#= Fecha_Cierre ? kendo.toString(new Date(Fecha_Cierre), "dd/MM/yyyy"): "" #</span>'
+						},
+
+						{ field: 'Efectividad', title: 'Efectividad', width: 380 },
+						{ field: 'Transversalizacion', title: 'Transversalización', width: 150 },
+
+						{ command: [ { name: "Send Mail", click: sendmail }, { className: "btn-destroy", name: "destroy", text: "Eliminar", visible:  function(dataitem){ return suser.mode == "READ/WRITE"}  }  ], width: 350 },
+
+						{ field: 'RegUpdateEmpleado', title: 'Último Cambio (usuario)', type: 'string' ,width: 250, filterable: { multi: true,	search: true }, editable: function(dataitem){ return false }
+						, editor: IDResponsable_DropDownEditor
+						, template: '<span>#= getFieldName(["IDEmpleado"], [RegUpdateEmpleado], "NombreCompleto", array_responsables ) #</span>'
+					    },
+
+						{ field: 'RegUpdateDateTime', title: 'Último Cambio (fecha)', type: 'string', width: 250 , editable: function(dataitem){ return false }
+					    },
+
+					]
+			}).data("kendoGrid");
+
+
+	function IDStatus_DropDownEditor(container, options) {
+
+		var IDReg = options.model['IDPA'];
+		var ID = options.model[options.field];
+
+		$('<input name="' + options.field + '" id="DD_' + options.field + '_' + IDReg + '"/>')
+		//$('<input name="' + options.field + '"/>')
+		.appendTo(container)
+		.kendoDropDownList({
+			autoWidth: true,
+			animation: {
+				   close: {
+					     effects: "fadeOut zoom:out",
+					     duration: 300
+					},
+				   	open: {
+				     	effects: "fadeIn zoom:in",
+				     	duration: 300
+				   	}
+			},
+			autoBind: true,
+			dataTextField: "DenoEstado",
+			dataValueField: "IDEstado",
+			dataSource: json_estados,
+		});
+	};
+
+	function IDTipoPlan_DropDownEditor(container, options) {
+
+		var IDReg = options.model['IDPA'];
+		var ID = options.model[options.field];
+
+		$('<input name="' + options.field + '" id="DD_' + options.field + '_' + IDReg + '"/>')
+		//$('<input name="' + options.field + '"/>')
+
+		.appendTo(container)
+		.kendoDropDownList({
+			autoWidth: true,
+			animation: {
+				   close: {
+					     effects: "fadeOut zoom:out",
+					     duration: 300
+					},
+				   	open: {
+				     	effects: "fadeIn zoom:in",
+				     	duration: 300
+				   	}
+			},
+		 	autoBind: true,			
+		   	dataTextField: "DenoTipoPlan",
+		   	dataValueField: "IDTipoPlan",
+		   	dataSource: json_tiposplan
+		});
+	};
+	
+	function IDCliente_DropDownEditor(container, options) {
+
+		var IDReg = options.model['IDReg'];
+		var ID = options.model[options.field];
+
+		$('<input name="' + options.field + '" id="DD_' + options.field + '_' + IDReg + '"/>')
+		.appendTo(container)
+		.kendoDropDownList({
+			autoWidth: true,
+			animation: {
+				   close: {
+					     effects: "fadeOut zoom:out",
+					     duration: 300
+					},
+				   	open: {
+				     	effects: "fadeIn zoom:in",
+				     	duration: 300
+				   	}
+			},
+		 	autoBind: true,			
+			dataTextField: "DenoCliente",
+			dataValueField: "IDCliente",
+		   	dataSource: json_clientes,
+		});
+	};
+
+	function IDTipoIncidente_DropDownEditor(container, options) {
+
+		var IDReg = options.model['IDReg'];
+		var ID = options.model[options.field];
+
+		$('<input name="' + options.field + '" id="DD_' + options.field + '_' + IDReg + '"/>')
+		.appendTo(container)
+		.kendoDropDownList({
+			autoWidth: true,
+			animation: {
+				   close: {
+					     effects: "fadeOut zoom:out",
+					     duration: 300
+					},
+				   	open: {
+				     	effects: "fadeIn zoom:in",
+				     	duration: 300
+				   	}
+			},
+		 	autoBind: true,
+		 	dataTextField: "DenoTipoIncidente",
+			dataValueField: "IDTipoIncidente",
+		   	dataSource: json_tiposincidencia,
+		});
+	};
+
+	function IDProyecto_DropDownEditor(container, options) {
+
+		var IDReg = options.model['IDReg'];
+		var ID = options.model[options.field];
+
+		$('<input name="' + options.field + '" id="DD_' + options.field + '_' + IDReg + '"/>')
+		.appendTo(container)
+		.kendoDropDownList({
+			autoWidth: true,
+			animation: {
+				   close: {
+					     effects: "fadeOut zoom:out",
+					     duration: 300
+					},
+				   	open: {
+				     	effects: "fadeIn zoom:in",
+				     	duration: 300
+				   	}
+			},
+		 	autoBind: true,
+		 	dataTextField: "DenoProyecto",
+			dataValueField: "IDProyecto",
+		   	dataSource: json_proyectos,
+		});
+	};
+
+	function IDResponsable_DropDownEditor(container, options) {
+
+		var IDReg = options.model['IDReg'];
+		var ID = options.model[options.field];
+
+        // var Filtered_DS = show_responsables_DS;
+        // Filtered_DS.filter({field: "IsDeleted", operator: "eq", value: 0});
+        // var dataset = Filtered_DS.data().toJSON();
+
+		$('<input name="' + options.field + '" id="DD_' + options.field + '_' + IDReg + '"/>')
+		.appendTo(container)
+		.kendoDropDownList({
+			autoWidth: true,
+			animation: {
+				   close: {
+					     effects: "fadeOut zoom:out",
+					     duration: 300
+					},
+				   	open: {
+				     	effects: "fadeIn zoom:in",
+				     	duration: 300
+				   	}
+			},
+		 	autoBind: true,
+		 	dataTextField: "NombreCompleto",
+			dataValueField: "IDEmpleado",
+		   	dataSource: json_responsables_activos
+
+		});
+	};
+
+	show_graph_DS = new kendo.data.DataSource({
+		transport: {
+			read: {
+				url: apiLocation + '/api/sqlprocedure',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				processData: false,
+				data: { Conn: DataBase, ProcName: base_graph}
+			},
+			parameterMap: function (Data) { 
+				Data.Year = 2017;
+				Data.IDTipoPlan = combo_tiposplan.value();
+				Data.IDCliente = combo_clientes.value();
+				Data.IDTipoIncidente = combo_tiposincidencia.value();
+				Data.IDResponsable = combo_responsables.value();
+				Data.IDProyecto = combo_proyectos.value();
+				
+				return JSON.stringify(Data); 
+			}
+		},
+		schema: {
+			data: 'Data', // Campo donde la API debe devolver un ARRAY de datos
+			errors: function (Response) {
+				if (Response.Status == 'KO') { return Response.Message; }
+
+				return null;
+			}
+		},
+		error: showErrors
+	});
+
+
+	function Date_DataPickerEditor(container, options) {
+		$('<input required name="' + options.field + '"/>')
+			.appendTo(container)
+			.kendoDatePicker({ format: "dd/MM/yyyy", weekNumber: true });
+	};
+
+	var bt_load = $("#bt_load").kendoButton({
+		click: BuscaPlanes
+	});
+
+	function BuscaPlanes() {
+
+		if(show_planes_DS.hasChanges()) {
+			alert("ATENCIÓN: Tiene cambios pendientes de Guardar !!! (SAVE).")
+		} else {
+
+			// origen de datos de los combos
+			show_estados_DS.read();
+			show_tiposplan_DS.read();
+			show_clientes_DS.read();
+			show_tiposincidencia_DS.read();
+			show_responsables_DS.read();
+			show_responsables_DS_activos.read();
+			show_proyectos_DS.read();
+
+			// planes seleccionados por la selección en los combos.
+			show_planes_DS.read({
+	 					IDStatus: combo_estados.value(),
+						IDTipoPlan: combo_tiposplan.value(),
+						IDCliente: combo_clientes.value(),
+						IDTipoIncidente: combo_tiposincidencia.value(),
+						IDResponsable: combo_responsables.value(),
+						IDProyecto: combo_proyectos.value(),
+					});
+			
+			// console.log(json_estados);
+			// console.log(json_tiposplan);
+			// console.log(json_clientes);
+			// console.log(json_tiposincidencia);
+			// console.log(json_responsables);
+			// console.log(json_responsables_activos);
+			// console.log(json_proyectos);
+
+		}
+	};
+	
+
+	$('.topframe').mouseover(function () {
+		$('.seleccion').removeClass('Hidden');
+	});
+
+	 // $( ".topframe" ).mouseover(function() {
+	 //   $('.seleccion').toggleClass('Hidden');
+	 // });
+
+	$( "#Grid" ).mouseover(function() {
+	  	$('.seleccion').addClass('Hidden');
+	});
+
+	$(".k-grid-read").on('click', function(e){
+    	BuscaPlanes();
+	});
+
+	$(".k-grid-filtersOFF").on('click', function(e){
+     e.preventDefault();
+	    var datasource = $("#grid_planes").data("kendoGrid").dataSource;
+	    //Clear filters:
+	    datasource.filter([]);
+	});
+
+	function sendmail(e){
+		alert("Se ha enviado, un nuevo e-mail al Responsable.");
+
+  		e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+
+		envia_mail_DS.read({IDPA: dataItem.IDPA || 0});
+	};
+
+	$.ajax({ // busca el usuario en session en el equipo remoto
+		    type: "POST",
+		    url: 'http://rpas022a:65101/remoteusr',
+		    dataType: "json",
+		    crossDomain : true,
+		    success: function(res) {
+		        //var res_data = JSON.parse(res);
+
+		        suser.remotehost = res.remotehost;
+		        suser.user = res.user;
+		        suser.error = res.error;
+		        suser.idempleado = "";
+				suser.nombreEmpleado = ""; 
+				suser.mode ="READ ONLY";  //default
+			
+				findUser_DS.read().then(function() {
+				  var view = findUser_DS.view();
+				  if(view[0]){
+					  suser.idempleado = view[0].IDEmpleado;
+					  suser.nombreEmpleado = view[0].NombreEmpleado; 
+
+					 if(suser.idempleado.substring(0,4) == '1590') 
+					    	{ 	suser.mode = "READ/WRITE";
+
+					      		//Posiciono al user session como respnsable del proyecto
+		  						combo_responsables.value(suser.idempleado);	
+		  						combo_estados.value('Abierto');
+
+ 								//Informo en cabecera del usuario detectado
+					  			$('#user_session').html('Logged user: ' + suser.nombreEmpleado || 'unknown'); 
+					  			$('#user_mode').html('Mode: ' + suser.mode  || ''); 
+							} 
+				   }
+
+			    if(suser.mode == "READ ONLY") {
+			 		$(".k-grid-save-changes").hide();
+					$(".k-grid-add").hide();
+					$(".k-grid-cancel-changes").hide();
+					}				   
+
+				  BuscaPlanes();
+
+				}, function(err){
+					alert(err);
+				});
+
+		  	},
+			error: function(err) {
+		        console.log(err), 
+		  		$('#user_session').text('User Logged: <Error detecting user>'); }
+	});
+
+
+	function MyformatDate(indate) {
+		var rf = null; //Defualt value
+		var checkdate = new Date(indate);
+
+		//console.log('date >> ' + checkdate);
+
+		if(indate && checkdate instanceof Date && !isNaN(checkdate.valueOf())) {
+			var day = checkdate.getDate();
+			var month = checkdate.getMonth() + 1 ;
+			var year = checkdate.getFullYear();
+
+			rf = year + "-" + (month < 10 ? "0" :"") + month + "-" + (day < 10 ? "0" :"") + day;
+			} 
+	
+		//console.log('rf >> ' + rf);	  
+		
+
+		return rf;
+	}
+
+	
+
+
+// TRUST CURVE --------------------------------------------------------------------------------------------------			
+
+	$("#bt_trustcurve").on('click', function(e){
+
+		$('#Grid').css( "height", "0" );
+		$('#Chart').css( "height", "90%" );
+
+		show_graph_DS.read();
+		createChart();
+		
+		//$("#Chart").css("height", "90%").data("kendoChart").resize();
+	});
+
+
+	$("#bt_datagird").on('click', function(e){
+
+ 		$('#Chart').css( "height", "0" ); 
+		$('#Grid').css( "height", "100%" );
+	});
+
+
+	function weeksYearStr(){
+		var rf = [];
+		for (i = 0; i < 52; i++) {
+		      rf[i] = 'CW' + (i<9 ? '0': '') + (i+1) ;
+			};
+		return rf;	
+	}
+
+   function createChart() {
+            $("#Chart").kendoChart({
+				theme: "moonlight",
+                title: {
+                    //text: "Gross domestic product growth \n /GDP annual %/"
+					text: "TRUST CURVE",
+					font: "20px arial",
+					position: "top",
+					color: "white",
+					visible: true,
+  				    margin: {
+						top: 50
+						}
+				},
+				plotArea: {
+				margin: {
+					left: 20,
+					right: 20,
+					top: 5,
+					bottom: 20
+					}, 		
+				background: "black"						
+  				},
+                legend: {
+					margin: 0,
+					visible: true,
+                    position: "top",
+                },
+                chartArea: {
+					background: "#333333"
+                },
+                seriesDefaults: {
+                    type: "line",
+                    style: "smooth"
+                },
+ 				dataSource: show_graph_DS,
+	                series: [{
+	                    type: "line",
+	                    field: "AcumOpen",
+						name: "Open Incidents",
+						color: "red",
+						labels: {visible: true}
+	                }, {
+	                    type: "line",
+	                    field: "AcumClose",
+						name: "Closed Incidents",
+						color: "lime",
+						labels: {visible: true}
+											
+	                }],
+                valueAxis: {
+                    labels: {
+						format: "{0}",
+						color: "orange"
+                    },
+                    line: {
+                        visible: true
+                    },
+                    axisCrossingValue: 0
+                },
+                categoryAxis: {
+					categories: weeksYearStr(), 
+					color: "orange",
+                    majorGridLines: {
+						visible: true,
+						color: "darkgray"
+                    },
+                    labels: {
+                        rotation: 45
+                    }
+				},
+				zoomable: {
+					mousewheel: true
+					},
+                tooltip: {
+                    visible: true,
+                    format: "{0}",
+                    template: "#= series.name #: #= value #"
+                }
+			});
+    };
+
+
+
+
+
+
+
+});	  // END
+
+
+
+
+
+
+

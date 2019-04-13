@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="55px"
+	 height="55px" viewBox="0 0 55 55" enable-background="new 0 0 55 55" xml:space="preserve">	
+	<g id="send">
+		<rect x="12.125" y="16.275" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="30.75" height="22.449"/>
+		<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="22.68" y1="22.68" x2="32.351" y2="22.68"/>
+		<polyline fill="none" stroke="#FFFFFF" stroke-linejoin="bevel" stroke-miterlimit="10" points="22.68,27.494 27.507,22.667 
+			32.318,27.479 		"/>
+		
+			<line fill="none" stroke="#FFFFFF" stroke-linejoin="bevel" stroke-miterlimit="10" x1="27.515" y1="32.351" x2="27.515" y2="22.667"/>
+	</g>
+</svg>
