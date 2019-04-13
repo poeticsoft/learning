@@ -1,4 +1,7 @@
+
 // https://medium.com/@mohandere/rxjs-5-in-5-minutes-1c3b4ed0d8cc
+// https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
+// https://www.learnrxjs.io/operators/
 
 import { 
   Component,
@@ -9,11 +12,14 @@ import {
   Subscription,
   fromEvent,
   interval,
-  pipe
+  combineLatest, 
+  merge
 } from 'rxjs';
-import { filter } from 'rxjs/operators';
-import { Client } from './client';
-import { ClientsService } from './clients.service';
+import { 
+  filter,
+  map,
+  scan
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -24,80 +30,54 @@ export class AppComponent {
 
   @ViewChild('Emit') Emit;
 
-  clients: Client[] = [];
   emitClick$: Observable<any>;
   clickSubscription: Subscription;
-  clients$: Observable<Client[]>;
-  clientsSuscription: Subscription;
-  burst: Subscription;
 
-  constructor(
-    private clientsService: ClientsService
-  ) {
+  burst$: Observable<any>;
+  burstSubscription: Subscription;  
 
-  }
+  combine$: Observable<any>;
+  combineSubscription: Subscription;  
 
-  /* Init observables & observes */
+  constructor() {}
 
   ngOnInit() {
 
-    this.emitClick$ = fromEvent(this.Emit.nativeElement, 'click');
-    this.clickSubscription = this.emitClick$.subscribe(this.clickEmited);
+    this.emitClick$ = fromEvent(this.Emit.nativeElement, 'click')
+    .pipe(
+      map((E) => {
 
-    this.clients$ = this.clientsService.observeClients$();
-    this.clientsSuscription = this.clients$.subscribe(this.clientsChange.bind(this));
-  }
+        return 1;
+      }),
+      scan((Acc, D) => {
 
-  /* Observable clients */
+        return Acc += D;
+      })
+    );
+    this.clickSubscription = this.emitClick$.subscribe((D) => { console.log('emitClick > ' + D); });
 
-  clientsChange(clients: Client[]) {
-    
-    this.clients = clients;
-  }  
+    this.burst$ = interval(10)
+    .pipe(
+      filter((Index) => { return Index % 2 ? true : false; }),
+      map(D => {
 
-  /* Observer click with object*/
+        return 'Burst ' + D;
+      })
+    );
 
-  clickEmited = { // for observables as http fetch > others http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html
-    next: (Event) => {
-    
-      console.log(this);
-    },
-    error: () => {
-
-
-    },
-    complete: () => {
-
-
-    }
-  };
-
-  /* Clear subscription */
-
-  ngOnDestroy() {
-
-    this.clickSubscription.unsubscribe();
-    this.clientsSuscription.unsubscribe();
-  }
-
-  /* Interface tools */
-
-  addClient(D) {
-    
-    this.clientsService.addClient(new Client('C ' + (D || 'X')));
+    this.combine$ = merge(this.emitClick$, this.burst$);
+    this.combineSubscription = this.combine$.subscribe(D => { console.log('merge > ' + D); });
   }
 
   startBurst() {
 
-    this.burst = interval(10)
-    .pipe(
-      filter((Index) => { return Index % 2 ? true : false; })
-    )
-    .subscribe(this.addClient.bind(this));
+    console.clear();  
+
+    this.burstSubscription = this.burst$.subscribe((D) => { console.log('burst > ' + D); });
   }
 
   stopBurst() {
 
-    this.burst.unsubscribe();
+    this.burstSubscription.unsubscribe();
   }
 }

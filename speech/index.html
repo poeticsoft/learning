@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SPEECH</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
+	</head>
+	<body>
+		<script>
+
+			// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance
+
+			var synth = window.speechSynthesis;
+			var voices;
+		
+			function say(m, voice) {
+
+				var msg = new SpeechSynthesisUtterance();
+				msg.voice = voices[voice];
+				msg.voiceURI = "native";
+				msg.volume = 1;
+				msg.rate = 1;
+				msg.pitch = 1;
+				msg.text = m;
+				msg.lang = 'es';
+				speechSynthesis.speak(msg)
+				.then(function() {
+
+					console.log('jarl');
+				});
+			}
+
+			setTimeout(function() {
+
+				voices = synth.getVoices();
+				
+				console.log(voices);
+
+				say('hola caracola', 7);
+			}, 100);
+		</script>
+	</body>
+</html>

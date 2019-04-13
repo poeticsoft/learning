@@ -2,36 +2,24 @@
 :host {
 
 	display: block;
-	padding: 0 20px 20px;
-	border: solid 1px #ccc;
-	margin: 20px;
 
-	.Clients {
+	.Tools {
 
-		padding: 20px 0 0 20px;
-		margin: 20px 0 0 0;
+		padding: 20px;
 		border: solid 1px #ccc;
 		
-		.Client {				
+		button {
 
-			padding: 20px;
-			margin: 0 20px 20px 0;
-			border: solid 1px #ccc;
-			display: inline-block;
+			background: none;
+			border-radius: 0;
+			padding: 10px 20px;
+			border: solid 1px;
+			cursor: pointer;
 		}
-	}
 
-	button {
+		button + button {
 
-		background: none;
-		border-radius: 0;
-		padding: 10px 20px;
-		border: solid 1px;
-		cursor: pointer;
-	}
-
-	button + button {
-
-		margin: 0 0 0 10px;
+			margin: 0 0 0 10px;
+		}
 	}
 }
