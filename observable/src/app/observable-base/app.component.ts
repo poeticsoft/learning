@@ -56,7 +56,7 @@ export class AppComponent {
     );
     this.clickSubscription = this.emitClick$.subscribe((D) => { console.log('emitClick > ' + D); });
 
-    this.burst$ = interval(10)
+    this.burst$ = interval(900)
     .pipe(
       filter((Index) => { return Index % 2 ? true : false; }),
       map(D => {
