@@ -1,5 +1,16 @@
-<ul>
-  <li class="text" *ngFor="let product of products | async">
-    {{product.ProductName}}
-  </li>
-</ul>
+<div class="Products">
+  <h3>Products [{{ products.length }}]</h3>
+  <ul>
+    <li *ngFor="let product of products">
+      {{product.ProductName}}
+    </li>
+  </ul>
+  <button (click)="addProduct()"
+          *ngIf="UserLoged">ADD</button>
+</div>
+<div class="Tools">
+  <button (click)="login()">LOGIN</button>
+  <button (click)="logout()">LOGOUT</button>
+  <span class="State" *ngIf="UserLoged">LOGED</span>
+  <span class="State" *ngIf="!UserLoged">NO LOGED</span>
+</div>
