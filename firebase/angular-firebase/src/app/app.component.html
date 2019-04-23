@@ -1,7 +1,9 @@
 <div class="Products">
   <h3>Products [{{ products.length }}]</h3>
   <ul>
-    <li *ngFor="let product of products">
+    <li *ngFor="let product of products"
+        contenteditable="true"
+        (blur)="updateProduct($event, product.id)">
       {{product.ProductName}}
     </li>
   </ul>

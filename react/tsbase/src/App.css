@@ -1,0 +1,20 @@
+
+.App h4 {
+
+	margin: 10px;
+}
+
+.App button {
+
+	margin: 10px 0;
+	padding: 5px 10px;
+	background: none;
+	border: solid 1px #ccc;
+	cursor: pointer;	
+}
+
+.App button:hover {
+
+	background-color: #ccc;
+	color: #fff;
+}
