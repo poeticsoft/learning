@@ -26,6 +26,8 @@ function visibilityFilter(state = SHOW_ALL, action: IAction): any {
 
 function todos(state = [], action: IAction): any {
 
+  console.log(state);
+
   switch (action.type) {
 
     case ADD_TODO:
@@ -33,6 +35,7 @@ function todos(state = [], action: IAction): any {
       return [
         ...state,
         {
+          id: state.length,
           text: action.payload.text,
           completed: false
         }

@@ -1,0 +1,25 @@
+
+html, body {
+
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  #root {
+
+    height: 100%;
+  }
+}
+
+code {
+
+  font-family: 'Courier New', monospace;
+}

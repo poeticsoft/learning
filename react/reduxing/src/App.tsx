@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Todo from './component/todo';
+import Footer from './component/footer'
+import AddTodo from './container/add-todo'
+import VisibleTodoList from './container/visible-todo-list'
 
-/* Test redux 
+
+/* Test redux
 import {
   addTodo,
   toggleTodo,
@@ -18,6 +21,7 @@ console.log(store.getState());
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 const unsubscribe = store.subscribe(() => console.log(store.getState()));
+
 // Dispatch some actions
 store.dispatch(addTodo('Learn about actions'));
 store.dispatch(addTodo('Learn about reducers'))
@@ -27,7 +31,7 @@ store.dispatch(toggleTodo(1))
 store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED))
 
 // Stop listening to state updates
-unsubscribe();
+unsubscribe(); 
 */
 
 class App extends Component {
@@ -36,7 +40,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        REDUX
+        <AddTodo />
+        <VisibleTodoList />
+        <Footer />
       </div>
     );
   }

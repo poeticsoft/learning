@@ -1,0 +1,42 @@
+
+.App {
+  
+  border: solid 1px #ccc;
+  padding: 10px;
+  height: 100%;
+  box-sizing: border-box;
+
+  .State,
+  .Content {
+  
+    border: solid 1px #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .State {
+
+    margin: 0 0 10px 0;
+
+    .Reset,
+    .Reason {
+      
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .Reset {
+
+      width: 20px;
+      height: 20px;
+      background-color: #ff942f;
+      margin: 0 5px 0 0;
+    }
+    
+  }
+
+  .Content {
+
+    height: calc(100% - 55px);
+  }
+}
